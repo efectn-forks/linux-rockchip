@@ -76,7 +76,7 @@
         	pinctrl-0 = <&i2c5m2_xfer>;
         	status = "okay";
         
-        	dsi1_gt1x: gt1x@14 {
+        	/*dsi1_gt1x: gt1x@14 {
         		compatible = "goodix,gt1x";
         		reg = <0x14>;
         		pinctrl-names = "default";
@@ -87,7 +87,20 @@
         		goodix,rst-gpio = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
         		keep-otp-config;
         		status = "okay";
-        	};
+        	};*/
+
+			dsi1_gt9xx: gt9xx@14 {
+				compatible = "goodix,gt9xx";
+				reg = <0x14>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&gt9xx_gpio>;
+				touch-gpio = <&gpio4 RK_PA0 IRQ_TYPE_LEVEL_HIGH>;
+				reset-gpio = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+				max-x = <480>;
+				max-y = <800>;
+				tp-size = <911>;
+				status = "okay";
+			};
         
         	dsi1_e2prom: eeprom@50 {
         		compatible = "microchip,24c02", "atmel,24c02";
