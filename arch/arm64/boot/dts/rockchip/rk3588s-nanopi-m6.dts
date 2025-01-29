@@ -134,6 +134,16 @@
 		vin-supply = <&vcc5v0_usb>;
 	};
 
+	lcd_3v3: lcd-3v3 {
+		compatible = "regulator-fixed";
+		regulator-name = "lcd_3v3";
+		regulator-always-on;
+		regulator-boot-on;
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		vin-supply = <&vcc3v3_sys>;
+	};
+
 	pwm_backlight: pwm-backlight {
 		status = "disabled";
 		compatible = "pwm-backlight";

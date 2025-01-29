@@ -99,6 +99,7 @@
 				max-x = <480>;
 				max-y = <800>;
 				tp-size = <911>;
+				tp-supply = <&lcd_3v3>;
 				status = "okay";
 			};
         
