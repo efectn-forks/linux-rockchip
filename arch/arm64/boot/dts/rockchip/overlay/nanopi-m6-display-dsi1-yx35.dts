@@ -89,7 +89,7 @@
         		status = "okay";
         	};*/
 
-			dsi1_gt9xx: gt9xx@14 {
+			/*dsi1_gt9xx: gt9xx@14 {
 				compatible = "goodix,gt9xx";
 				reg = <0x14>;
 				pinctrl-names = "default";
@@ -100,7 +100,7 @@
 				max-y = <800>;
 				tp-size = <911>;
 				status = "okay";
-			};
+			};*/
         
         	dsi1_e2prom: eeprom@50 {
         		compatible = "microchip,24c02", "atmel,24c02";
