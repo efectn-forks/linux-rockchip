@@ -89,7 +89,7 @@
         		status = "okay";
         	};*/
 
-			dsi1_gt9xx: gt9xx@5d {
+			/*dsi1_gt9xx: gt9xx@5d {
 				compatible = "goodix,gt911";
 				reg = <0x5d>;
 				pinctrl-names = "default";
@@ -100,6 +100,19 @@
 				reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
 				touchscreen-size-x = <480>;
 				touchscreen-size-y = <800>;
+				status = "okay";
+			};*/
+
+			dsi1_gt9xx: gt9xx@5d {
+				compatible = "goodix,gt9xx";
+				reg = <0x5d>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&touch_dsi1_gpio>;
+				reset-gpio = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+				touch-gpio = <&gpio4 RK_PA0 IRQ_TYPE_EDGE_FALLING>;
+				max-x = <480>;
+				max-y = <800>;
+				tp-size = <911>;
 				status = "okay";
 			};
         
