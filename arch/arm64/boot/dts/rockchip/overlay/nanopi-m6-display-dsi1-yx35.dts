@@ -90,7 +90,7 @@
         	};*/
 
 			dsi1_gt9xx: gt9xx@5d {
-				compatible = "goodix,gt9xx";
+				compatible = "goodix,gt911";
 				reg = <0x5d>;
 				pinctrl-names = "default";
 				pinctrl-0 = <&touch_dsi1_gpio>;
@@ -98,7 +98,6 @@
 				reset-gpio = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
 				max-x = <480>;
 				max-y = <800>;
-				tp-size = <911>;
 				tp-supply = <&lcd_3v3>;
 				status = "okay";
 			};
