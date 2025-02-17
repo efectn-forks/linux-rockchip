@@ -415,7 +415,7 @@
 		wakeup-source;
 	};
 
-	usbc0: fusb302@22 {
+	/*usbc0: fusb302@22 {
 		compatible = "fcs,fusb302";
 		reg = <0x22>;
 		interrupt-parent = <&gpio0>;
@@ -472,7 +472,7 @@
 				};
 			};
 		};
-	};
+	};*/
 };
 
 &i2c3 {
