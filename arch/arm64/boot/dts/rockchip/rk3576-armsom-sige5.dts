@@ -828,12 +828,13 @@
 		};
 	};
 };
+*/
 
 &usb_drd1_dwc3 {
 	dr_mode = "host";
 	status = "okay";
 };
-*/
+
 &vdpp {
 	status = "okay";
 };
