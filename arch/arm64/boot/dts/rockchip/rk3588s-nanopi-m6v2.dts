@@ -1,0 +1,73 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+/dts-v1/;
+
+#include "rk3588s-nanopi-m6.dts"
+
+/ {
+	model = "FriendlyElec NanoPi M6V2";
+	compatible = "friendlyelec,nanopi-m6v2", "friendlyelec,nanopi-m6",
+		     "rockchip,rk3588";
+
+	/delete-node/ rt5616-sound;
+
+	es8389_sound: es8389-sound {
+		status = "okay";
+		compatible = "rockchip,multicodecs-card";
+		pinctrl-names = "default";
+		pinctrl-0 = <&hp_det>;
+		rockchip,card-name = "rockchip-es8389";
+		hp-det-gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
+		rockchip,pre-power-on-delay-ms = <30>;
+		rockchip,post-power-down-delay-ms = <40>;
+		rockchip,format = "i2s";
+		rockchip,mclk-fs = <256>;
+		rockchip,cpu = <&i2s0_8ch>;
+		rockchip,codec = <&es8389>;
+		rockchip,audio-routing =
+			"Headphone", "HPOL",
+			"Headphone", "HPOR",
+			"Headphone", "Headphone Power",
+			"INPUT1", "Main Mic",
+			"INPUT2", "Main Mic";
+	};
+
+	gpio_keys: gpio-keys {
+		compatible = "gpio-keys";
+		pinctrl-names = "default";
+		pinctrl-0 = <&user_btn_pin>;
+
+		user_button {
+			debounce-interval = <50>;
+			gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_LOW>;
+			label = "USER_BTN";
+			linux,code = <BTN_1>;
+			wakeup-source;
+		};
+	};
+};
+
+&i2c7 {
+	/delete-node/ rt5616@1b;
+
+	es8389: es8389@10 {
+		status = "okay";
+		#sound-dai-cells = <0>;
+		compatible = "everest,es8389";
+		reg = <0x10>;
+		clocks = <&mclkout_i2s0>;
+		clock-names = "mclk";
+		assigned-clocks = <&mclkout_i2s0>;
+		assigned-clock-rates = <12288000>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&i2s0_mclk>;
+	};
+};
+
+&pinctrl {
+	gpio-keys {
+		user_btn_pin: user-btn-pin {
+			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
+};
